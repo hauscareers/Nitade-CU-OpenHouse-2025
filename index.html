@@ -89,9 +89,25 @@
             padding: 10px;
             border-bottom-left-radius: 10px;
             border-bottom-right-radius: 10px;
+            margin-top: 20px; /* ขยับลงจากทักษะ */
         }
         .result-footer img {
             max-width: 100px; /* ขนาดโลโก้ */
+        }
+        .restart-btn {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            font-size: 18px;
+            border: none;
+            background: #D9A374;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .restart-btn:hover {
+            background: #C18B64;
         }
     </style>
 </head>
@@ -111,32 +127,39 @@
         <div class="skills-box" id="skills"></div>
     </div>
 
-<div class="result-container" id="result-page" style="display: none;">
-    <div class="result-content" style="text-align: center; background-color: white; padding: 20px; border-radius: 10px; max-width: 600px; margin: auto; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);">
-        <!-- Major Image Section -->
-        <div class="result-image-container" style="display: flex; justify-content: center; align-items: center;">
-            <img id="major-image" src="" alt="Major Image" style="display: none; width: 100%; max-width: 500px; border-radius: 10px;">
-        </div>
-        
-        <!-- Career Result Title -->
-        <h2 id="career-result" style="margin-top: 20px;"></h2>
-        
-        <!-- Divider -->
-        <hr id="divider" style="display: none; border: 1px solid black; margin: 20px 0;">
-        
-        <!-- Career Image Section -->
-        <div class="result-image-container" style="display: flex; justify-content: center; align-items: center;">
-            <img id="career-image" src="" alt="Career Image" style="display: none; width: 100%; max-width: 500px; border-radius: 10px;">
-        </div>
-        
-        <!-- Skills Text -->
-        <p id="result-skills" style="margin-top: 20px;"></p>
-        
-        <!-- Restart Test Button -->
-        <button class="choice-btn" onclick="restartTest()">เล่นอีกรอบ</button>
-    </div>
-</div>
+<div class="result-container" id="result-page">
+        <div class="result-content">
+            <!-- แถบด้านบน -->
+            <div class="result-header">ดอกไม้ของคุณ</div>
 
+            <!-- Major Image Section -->
+            <div class="result-image-container">
+                <img id="major-image" src="" alt="Major Image" style="display: none; width: 100%; max-width: 500px; border-radius: 10px;">
+            </div>
+
+            <!-- Career Result Title -->
+            <h2 id="career-result" style="margin-top: 20px;"></h2>
+
+            <!-- Divider -->
+            <hr id="divider" style="display: none; border: 1px solid black; margin: 20px 0;">
+
+            <!-- Career Image Section -->
+            <div class="result-image-container">
+                <img id="career-image" src="" alt="Career Image" style="display: none; width: 100%; max-width: 500px; border-radius: 10px;">
+            </div>
+
+            <!-- Skills Text -->
+            <p id="result-skills" style="margin-top: 20px;"></p>
+
+            <!-- แถบด้านล่างสำหรับใส่โลโก้ -->
+            <div class="result-footer">
+                <img src="นิเทศ-1024x538.png" alt="JOBBKK Logo">
+            </div>
+        </div>
+
+        <!-- ปุ่มรีสตาร์ท อยู่ล่างสุดของหน้า นอกกรอบ -->
+        <button class="restart-btn" onclick="restartTest()">เล่นอีกรอบ</button>
+    </div>
 
 
     <script>
