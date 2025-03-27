@@ -149,6 +149,7 @@
             <!-- Major Image Section -->
             <div class="result-image-container">
                 <h3 id="flower-name" style="margin-bottom: 10px;">ชื่อดอกไม้</h3>
+                <p id="flower-description"></p> <!-- บรรทัดที่เพิ่มขึ้น -->
                 <img id="major-image" src="" alt="Major Image" style="display: none; width: 100%; max-width: 500px; border-radius: 10px;">
             </div>
 
@@ -422,50 +423,56 @@
     let majorImage = ""; // รูปด้านบนชื่อสาขา
     let careerImage = ""; // รูปด้านบนอาชีพที่เกี่ยวข้อง
     let flowerName = ""; // ชื่อดอกไม้
+    let flowerDescription = ""; //คำบรรยายดอกไม้
 
     switch (maxScoreIndex) {
             case 0: 
-            majorRecommendation = "คุณเหมาะกับสาขา... Public Relations";
+            majorRecommendation = "คุณเหมาะกับสาขา การประชาสัมพันธ์ (Public Relations: PR)";
             career = "อาชีพที่รองรับในอนาคต: PR Specialist, Media Relations Manager, Event Coordinator";
             skills = "<strong>ทักษะที่ควรมี:</strong> การสื่อสาร, การบริหารโครงการ, ความคิดสร้างสรรค์";
             majorImage = "นิเทศ-1024x538.png";
             careerImage = "Asset 24.png";
-            flowerName = "ดอกกุหลาบ"; // เพิ่มชื่อดอกไม้
+            flowerName = "เดซี่"; // เพิ่มชื่อดอกไม้
+            flowerDescription = "สื่อถึงความโรแมนติก ความอบอุ่น และความมั่นใจ";
             break;
         case 1:
-            majorRecommendation = "คุณเหมาะกับสาขา... Advertising and Brand Communications";
+            majorRecommendation = "คุณเหมาะกับสาขา การโฆษณาและการสื่อสารตราสินค้า (Advertising and Brand Communications: ABC)";
             career = "อาชีพที่รองรับในอนาคต: Advertising Executive, Brand Manager, Marketing Specialist";
             skills = "<strong>ทักษะที่ควรมี:</strong> การออกแบบกราฟิก, การใช้โปรแกรมกราฟิก, ความคิดสร้างสรรค์";
             majorImage = "นิเทศ-1024x538.png";
             careerImage = "Asset 24.png";
             flowerName = "ดอกทานตะวัน"; // เพิ่มชื่อดอกไม้
+            flowerDescription = "สื่อถึงความโรแมนติก ความอบอุ่น และความมั่นใจ";
             break;
         case 2:
-            majorRecommendation = "คุณเหมาะกับสาขา... Media Design and Production";
+            majorRecommendation = "คุณเหมาะกับสาขา การออกแบบและผลิตสื่อ (Media Design and Production: MD)";
             career = "อาชีพที่รองรับในอนาคต: Media Designer, Video Producer, Motion Graphics Designer";
             skills = "<strong>ทักษะที่ควรมี:</strong> การออกแบบ, การตัดต่อวิดีโอ, ความคิดสร้างสรรค์";
             majorImage = "นิเทศ-1024x538.png";
             careerImage = "Asset 24.png";
             flowerName = "ดอกทิวลิป"; // เพิ่มชื่อดอกไม้
+            flowerDescription = "สื่อถึงความโรแมนติก ความอบอุ่น และความมั่นใจ";
             break;
         case 3:
-            majorRecommendation = "คุณเหมาะกับสาขา... Journalism and New Media";
+            majorRecommendation = "คุณเหมาะกับสาขา วารสารสนเทศและสื่อใหม่ (Journalism and New Media: JN)";
             career = "อาชีพที่รองรับในอนาคต: Journalist, Content Writer, Digital Media Specialist";
             skills = "<strong>ทักษะที่ควรมี:</strong> การเขียน, การวิเคราะห์ข่าวสาร, การทำงานกับข้อมูล";
             majorImage = "นิเทศ-1024x538.png";
             careerImage = "Asset 24.png";
             flowerName = "ดอกซากุระ"; // เพิ่มชื่อดอกไม้
+            flowerDescription = "สื่อถึงความโรแมนติก ความอบอุ่น และความมั่นใจ";
             break;
         case 4:
-            majorRecommendation = "คุณเหมาะกับสาขา... Speech Communication";
+            majorRecommendation = "คุณเหมาะกับสาขา วาทนิเทศ (Speech Communication)";
             career = "อาชีพที่รองรับในอนาคต: Public Speaker, Communication Consultant, Corporate Trainer";
             skills = "<strong>ทักษะที่ควรมี:</strong> การพูด, การโน้มน้าว, การสื่อสารระหว่างบุคคล";
             majorImage = "นิเทศ-1024x538.png";
             careerImage = "Asset 24.png";
             flowerName = "ดอกกล้วยไม้"; // เพิ่มชื่อดอกไม้
+            flowerDescription = "สื่อถึงความโรแมนติก ความอบอุ่น และความมั่นใจ";
             break;
         case 5:
-            majorRecommendation = "คุณเหมาะกับสาขา... Performing Arts";
+            majorRecommendation = "คุณเหมาะกับสาขา สื่อสารการแสดง (Performing Arts: PA)";
             career = "อาชีพที่รองรับในอนาคต: Actor, Stage Director, Performing Arts Manager";
             skills = "<strong>ทักษะที่ควรมี:</strong> การแสดง, การสื่อสารผ่านการแสดง, ความคิดสร้างสรรค์";
             majorImage = "นิเทศ-1024x538.png";
@@ -473,20 +480,22 @@
             flowerName = "ดอกมะลิ"; // เพิ่มชื่อดอกไม้
             break;
         case 6:
-            majorRecommendation = "คุณเหมาะกับสาขา... Film and Still Photography";
+            majorRecommendation = "คุณเหมาะกับสาขา ศิลปะภาพยนตร์ (Cinematic Arts)";
             career = "อาชีพที่รองรับในอนาคต: Photographer, Film Director, Cinematographer";
             skills = "<strong>ทักษะที่ควรมี:</strong> การถ่ายภาพ, การตัดต่อ, การเล่าเรื่องผ่านภาพ";
             majorImage = "Asset 1.png";
             careerImage = "Asset 24.png";
             flowerName = "ดอกลิลลี่"; // เพิ่มชื่อดอกไม้
+            flowerDescription = "สื่อถึงความโรแมนติก ความอบอุ่น และความมั่นใจ";
             break;
         case 7:
-            majorRecommendation = "คุณเหมาะกับสาขา... Communication Management Inter";
+            majorRecommendation = "คุณเหมาะกับสาขา การจัดการการสื่อสาร (หลักสูตรนานาชาติ) (Communication Management: BCM)";
             career = "อาชีพที่รองรับในอนาคต: Communication Manager, PR Consultant, Brand Strategist";
             skills = "<strong>ทักษะที่ควรมี:</strong> การบริหารจัดการ, การสื่อสารระหว่างองค์กร, การพัฒนากลยุทธ์";
             majorImage = "นิเทศ-1024x538.png";
             careerImage = "Asset 24.png";
             flowerName = "ดอกบัว"; // เพิ่มชื่อดอกไม้
+            flowerDescription = "สื่อถึงความโรแมนติก ความอบอุ่น และความมั่นใจ";
             break;
     }
 
