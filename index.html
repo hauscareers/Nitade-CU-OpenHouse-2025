@@ -1,0 +1,477 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Choice Game</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;700&display=swap');
+    
+        body {
+            font-family: 'Sarabun', sans-serif;
+            text-align: center;
+            background: #F5E1C8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .choice-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 18px;
+            border: none;
+           background: #E5B98C;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .choice-btn:hover {
+            background: #D9A374;
+        }
+        img {
+            max-width: 80%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .skills-box {
+            margin-top: 20px;
+            padding: 10px;
+            background: #f8f8f8;
+            border-radius: 5px;
+        }
+        .intro-container {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .intro-container img {
+            max-width: 80%;
+            margin-bottom: 30px;
+        }
+              .result-container {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .result-content {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: auto;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            border: 3px dashed #D9A374; /* กรอบเส้นประ */
+            position: relative;
+        }
+        .result-header {
+            background-color: tan;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 10px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .result-footer {
+            background-color: tan;
+            padding: 10px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+        .result-footer img {
+            max-width: 100px; /* ขนาดโลโก้ */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="intro-container" id="intro-page">
+        <img src="นิเทศ-1024x538.png" alt="Career Image">
+        <h1>มาตามหาตัวตนของคุณกันว่าคุณเป็นดอกไม้ชนิดใด?</h1>
+          <p class="sub-text">ค้นหาสาขาที่เหมาะกับตัวคุณ!</p> 
+        <button class="choice-btn" onclick="startTest()">ไปกันเลยยยยย!</button>
+    </div>
+
+    <div class="container" id="question-page" style="display: none;">
+        <img id="question-image" src="" alt="Question Image">
+        <h1 id="question">Loading...</h1>
+        <div id="choices"></div>
+        <div class="skills-box" id="skills"></div>
+    </div>
+
+<div class="result-container" id="result-page" style="display: none;">
+    <div class="result-content" style="text-align: center; background-color: white; padding: 20px; border-radius: 10px; max-width: 600px; margin: auto; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);">
+        <!-- Major Image Section -->
+        <div class="result-image-container" style="display: flex; justify-content: center; align-items: center;">
+            <img id="major-image" src="" alt="Major Image" style="display: none; width: 100%; max-width: 500px; border-radius: 10px;">
+        </div>
+        
+        <!-- Career Result Title -->
+        <h2 id="career-result" style="margin-top: 20px;"></h2>
+        
+        <!-- Divider -->
+        <hr id="divider" style="display: none; border: 1px solid black; margin: 20px 0;">
+        
+        <!-- Career Image Section -->
+        <div class="result-image-container" style="display: flex; justify-content: center; align-items: center;">
+            <img id="career-image" src="" alt="Career Image" style="display: none; width: 100%; max-width: 500px; border-radius: 10px;">
+        </div>
+        
+        <!-- Skills Text -->
+        <p id="result-skills" style="margin-top: 20px;"></p>
+        
+        <!-- Restart Test Button -->
+        <button class="choice-btn" onclick="restartTest()">เล่นอีกรอบ</button>
+    </div>
+</div>
+
+
+
+    <script>
+        const questions = [
+            { 
+                text: "คุณชอบทำงานแบบไหนมากที่สุด?", 
+                image: "นิเทศ-1024x538.png", 
+                choices: [
+                    "วางแผนกลยุทธ์และดูแลภาพลักษณ์องค์กร", 
+                    "คิดไอเดียสร้างสรรค์และออกแบบ", 
+                    "ชอบพูดคุย พิธีกร หรือแสดงออก", 
+                    "ค้นหาข้อมูล วิเคราะห์ และเล่าเรื่องจริง"
+                ],
+                results: [
+                    [4, 3, 1, 1, 3, 2, 2, 4],
+                    [2, 4, 3, 1, 2, 2, 3, 3],
+                    [1, 2, 4, 2, 3, 4, 2, 1],
+                    [1, 2, 1, 4, 4, 2, 3, 2]
+                ]
+            },
+            { 
+                text: "ถ้าให้เลือกเรียนคอร์สพิเศษสักคอร์สหนึ่ง คุณจะเลือกอะไร?", 
+                image: "นิเทศ-1024x538.png",
+                choices: [
+                    "กลยุทธ์การประชาสัมพันธ์และการสร้างภาพลักษณ์", 
+                    "การสร้างโฆษณาและการออกแบบสื่อดิจิทัล", 
+                    "ศิลปะการพูด พิธีกร หรือการแสดง", 
+                    "การเขียนข่าวสารและสื่อดิจิทัล"
+                ],
+                results: [
+                    [4, 3, 2, 1, 3, 2, 3, 4],
+                    [2, 4, 3, 1, 3, 3, 3, 3],
+                    [1, 2, 4, 3, 4, 4, 2, 2],
+                    [1, 2, 2, 4, 4, 2, 3, 3]
+                ]
+            },
+            { 
+                text: "คุณถนัดด้านไหนมากที่สุด?", 
+                image: "นิเทศ-1024x538.png",
+                choices: [
+                    "วางแผน ติดต่อประสานงานกับคน", 
+                    "ใช้โปรแกรมออกแบบ วาดรูป ตัดต่อวิดีโอ", 
+                    "พูดต่อหน้าคนจำนวนมากหรือแสดงออกทางร่างกาย", 
+                    "เขียนข่าว บทความ หรือเล่าเรื่องจากมุมมองใหม่"
+                ],
+                results: [
+                    [0, 3, 2, 1, 3, 2, 2, 4],
+                    [2, 4, 3, 1, 3, 3, 2, 3],
+                    [1, 2, 4, 3, 4, 4, 3, 2],
+                    [1, 2, 2, 4, 4, 3, 3, 2]
+
+                ]
+            },
+            { 
+                text: "เวลาว่างคุณชอบทำอะไร?", 
+                image: "นิเทศ-1024x538.png",
+                choices: [
+                    "อ่านข่าวสาร อัปเดตเทรนด์สังคมและธุรกิจ", 
+                    "ดูโฆษณา กราฟิก หรือออกแบบภาพเอง", 
+                    "ฝึกพูด พิธีกร หรือซ้อมแสดง", 
+                    "เขียนไดอารี่หรือรีวิวสิ่งต่าง ๆ"
+                ],
+                results: [
+                    [3, 2, 1, 1, 3, 3, 3, 4],
+                    [2, 4, 3, 1, 3, 3, 2, 3],
+                    [1, 2, 4, 3, 4, 4, 3, 1],
+                    [1, 2, 2, 4, 4, 3, 3, 2]
+
+                ]
+              },
+            { 
+                text: "เมื่อเจองานที่ต้องแก้ปัญหา คุณเลือกวิธีไหน?", 
+                image: "นิเทศ-1024x538.png",
+                choices: [
+                    "วางแผนกลยุทธ์และวิเคราะห์ปัญหาเป็นขั้นตอน", 
+                    "ใช้ความคิดสร้างสรรค์เพื่อแก้ไขปัญหา", 
+                    "สื่อสารและประสานงานกับคนในทีมให้ช่วยกันแก้ปัญหา", 
+                    "ศึกษาหาข้อมูลและทดลองหาทางแก้จากแหล่งต่าง ๆ"
+                ],
+                results: [
+                    [3, 3, 2, 1, 3, 2, 2, 4],
+                    [2, 4, 3, 1, 3, 3, 2, 3],
+                    [1, 2, 4, 3, 4, 4, 3, 2],
+                    [1, 2, 2, 4, 4, 2, 3, 2]
+                ]
+            },
+            { 
+                text: "คุณอยากฝึกทักษะใดมากที่สุด?", 
+                image: "นิเทศ-1024x538.png",
+                choices: [
+                    "การบริหารโครงการและการสื่อสารองค์กร", 
+                    "การออกแบบกราฟิกและสื่อโฆษณา", 
+                    "ศิลปะการพูด การแสดง และการโน้มน้าวใจ", 
+                    "ทักษะการเขียน การวิเคราะห์ และการนำเสนอข้อมูล"
+                ],
+                results: [
+                    [4, 2, 1, 1, 3, 1, 1, 3], 
+                    [1, 4, 3, 1, 1, 1, 2, 2],
+                    [1, 1, 1, 2, 4, 3, 1, 1],
+                    [1, 1, 2, 4, 1, 2, 3, 1]
+                ]
+            },
+            { 
+                text: "คุณชอบทำงานเป็นทีม หรือทำงานเดี่ยวมากกว่ากัน?", 
+                image: "นิเทศ-1024x538.png",
+                choices: [
+                    "ทำงานเป็นทีม วางแผนและสื่อสารกับผู้อื่น", 
+                    "ทำงานคนเดียว คิดไอเดียและสร้างสรรค์ผลงาน", 
+                    "ทำงานที่ต้องใช้การพูดหรือแสดงออก", 
+                    "ทำงานที่ต้องหาข้อมูลและนำเสนอ"
+                ],
+                results: [
+                    [4, 2, 1, 1, 3, 1, 1, 4], 
+                    [1, 4, 3, 1, 1, 2, 2, 2],
+                    [1, 1, 1, 2, 4, 3, 1, 1],
+                    [1, 1, 2, 4, 1, 2, 3, 1]
+                ]
+            },
+            { 
+                text: "คุณอยากทำงานในสภาพแวดล้อมแบบไหน?", 
+                image: "นิเทศ-1024x538.png",
+                choices: [
+                    "ออฟฟิศ มีการวางแผนชัดเจน", 
+                    "สตูดิโอหรือพื้นที่สร้างสรรค์", 
+                    "เวที สถานที่ถ่ายทำ หรือหน้ากล้อง", 
+                    "นอกสถานที่ หรือเดินทางไปค้นคว้าหาข้อมูล"
+                ],
+                results: [
+                    [4, 2, 1, 1, 3, 1, 1, 3], 
+                    [1, 4, 3, 1, 1, 2, 2, 2],
+                    [1, 1, 1, 2, 4, 3, 1, 1],
+                    [1, 1, 2, 4, 1, 2, 3, 1]
+                ]
+            },
+  {
+    "text": "คุณคิดว่าทักษะการทำงานในปัจจุบันมีอะไรสำคัญที่สุด?",
+    "image": "นิเทศ-1024x538.png",
+    "choices": [
+      "การวางแผนกลยุทธ์และการบริหารจัดการ",
+      "การคิดสร้างสรรค์และการออกแบบสื่อ",
+      "ทักษะการพูดและการสื่อสาร",
+      "การคิดวิเคราะห์และการแก้ปัญหา"
+    ],
+    "results": [
+      [4, 3, 2, 1, 3, 2, 3, 4],
+      [2, 4, 3, 1, 3, 3, 3, 3],
+      [1, 2, 4, 3, 4, 4, 3, 2],
+      [1, 2, 2, 4, 4, 3, 4, 2]
+    ]
+  },
+  {
+    "text": "ถ้าให้เลือกงานที่ทำในทีม คุณจะเลือกงานประเภทไหน?",
+    "image": "นิเทศ-1024x538.png",
+    "choices": [
+      "วางแผนและบริหารจัดการโครงการ",
+      "ออกแบบและพัฒนาแผนการสื่อสาร",
+      "นำเสนอหรือพูดต่อหน้าคน",
+      "วิเคราะห์ข้อมูลและประเมินผล"
+    ],
+    "results": [
+      [0, 3, 2, 1, 3, 2, 3, 4],
+      [2, 4, 3, 1, 3, 3, 3, 3],
+      [1, 2, 4, 3, 4, 4, 3, 2],
+      [1, 2, 2, 4, 4, 3, 4, 3]
+    ]
+  },
+  {
+    "text": "ถ้าต้องทำงานที่ต้องแสดงออกต่อสาธารณะ คุณจะรู้สึกยังไง?",
+    "image": "นิเทศ-1024x538.png",
+    "choices": [
+      "ฉันจะวางแผนและเตรียมการอย่างรอบคอบก่อนเสมอ",
+      "ฉันจะออกแบบการนำเสนอให้ดูน่าสนใจและมีความคิดสร้างสรรค์",
+      "ฉันจะรู้สึกตื่นเต้นและอยากโชว์ความสามารถในการพูดหรือแสดง",
+      "ฉันจะศึกษาข้อมูลอย่างละเอียดและให้การนำเสนอมีสาระสำคัญ"
+    ],
+    "results": [
+      [0, 3, 2, 1, 3, 2, 4, 4],
+      [2, 4, 3, 1, 3, 3, 3, 3],
+      [1, 2, 4, 3, 4, 4, 3, 2],
+      [1, 2, 2, 4, 4, 3, 4, 3]
+    ]
+  },
+  {
+    "text": "คุณรู้สึกยังไงเกี่ยวกับการทำงานที่ต้องสร้างหรือเขียนเนื้อหาที่น่าสนใจ?",
+    "image": "นิเทศ-1024x538.png",
+    "choices": [
+      "ฉันชอบวางแผนและสร้างเนื้อหาที่มีประสิทธิภาพ",
+      "ฉันชอบการสร้างภาพและกราฟิกที่ดึงดูด",
+      "ฉันสนุกกับการพูดและการนำเสนอในแบบของตัวเอง",
+      "ฉันชอบการเขียนและเล่าเรื่องให้มีคุณค่า"
+    ],
+    "results": [
+      [0, 3, 2, 1, 3, 3, 4, 4],
+      [2, 4, 3, 1, 3, 3, 3, 3],
+      [1, 2, 4, 3, 4, 4, 3, 2],
+      [1, 2, 2, 4, 4, 3, 4, 3]
+    ]
+  }
+        ];
+        let currentQuestion = 0;
+        let totalScore = [0, 0, 0, 0, 0, 0, 0, 0];  // Scores for PR, ADV, MD, JNM, SPC, PA, FSP, CM
+
+        function startTest() {
+            document.getElementById("intro-page").style.display = "none";
+            document.getElementById("question-page").style.display = "block";
+            updateQuestion();
+        }
+
+        function nextQuestion(choiceIndex) {
+            for (let i = 0; i < totalScore.length; i++) {
+                totalScore[i] += questions[currentQuestion].results[choiceIndex][i];
+            }
+
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                updateQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function updateQuestion() {
+            document.getElementById("question").innerText = questions[currentQuestion].text;
+            document.getElementById("question-image").src = questions[currentQuestion].image;
+            const choicesDiv = document.getElementById("choices");
+
+            choicesDiv.innerHTML = '';
+
+            for (let i = 0; i < questions[currentQuestion].choices.length; i++) {
+                const button = document.createElement('button');
+                button.classList.add('choice-btn');
+                button.innerText = questions[currentQuestion].choices[i];
+                button.onclick = () => nextQuestion(i);
+                choicesDiv.appendChild(button);
+            }
+        }
+
+        function showResult() {
+    document.getElementById("question-page").style.display = "none"; // ซ่อนหน้าคำถาม
+    document.getElementById("result-page").style.display = "block"; // แสดงหน้าผลลัพธ์
+    const maxScoreIndex = totalScore.indexOf(Math.max(...totalScore));
+    let majorRecommendation = "";
+    let career = "";
+    let skills = "";
+    let majorImage = ""; // รูปด้านบนชื่อสาขา
+    let careerImage = ""; // รูปด้านบนอาชีพที่เกี่ยวข้อง
+
+    switch (maxScoreIndex) {
+        case 0: 
+            majorRecommendation = "คุณเหมาะกับสาขา... Public Relations";
+            career = "อาชีพที่คุณสามารถทำได้: PR Specialist, Media Relations Manager, Event Coordinator";
+            skills = "<strong>ทักษะที่ควรมี:</strong> การสื่อสาร, การบริหารโครงการ, ความคิดสร้างสรรค์";
+            majorImage = "นิเทศ-1024x538.png";
+            careerImage = "นิเทศ-1024x538.png";
+            break;
+        case 1:
+            majorRecommendation = "คุณเหมาะกับสาขา... Advertising and Brand Communications";
+            career = "อาชีพที่คุณสามารถทำได้: Advertising Executive, Brand Manager, Marketing Specialist";
+            skills = "<strong>ทักษะที่ควรมี:</strong> การออกแบบกราฟิก, การใช้โปรแกรมกราฟิก, ความคิดสร้างสรรค์";
+            majorImage = "นิเทศ-1024x538.png";
+            careerImage = "นิเทศ-1024x538.png";
+            break;
+        case 2:
+            majorRecommendation = "คุณเหมาะกับสาขา... Media Design and Production";
+            career = "อาชีพที่คุณสามารถทำได้: Media Designer, Video Producer, Motion Graphics Designer";
+            skills = "<strong>ทักษะที่ควรมี:</strong> การออกแบบ, การตัดต่อวิดีโอ, ความคิดสร้างสรรค์";
+            majorImage = "นิเทศ-1024x538.png";
+            careerImage = "นิเทศ-1024x538.png";
+            break;
+        case 3:
+            majorRecommendation = "คุณเหมาะกับสาขา... Journalism, Information, and New Media";
+            career = "อาชีพที่คุณสามารถทำได้: Journalist, Content Writer, Digital Media Specialist";
+            skills = "<strong>ทักษะที่ควรมี:</strong> การเขียน, การวิเคราะห์ข่าวสาร, การทำงานกับข้อมูล";
+            majorImage = "นิเทศ-1024x538.png";
+            careerImage = "นิเทศ-1024x538.png";
+            break;
+        case 4:
+            majorRecommendation = "คุณเหมาะกับสาขา... Speech Communication";
+            career = "อาชีพที่คุณสามารถทำได้: Public Speaker, Communication Consultant, Corporate Trainer";
+            skills = "<strong>ทักษะที่ควรมี:</strong> การพูด, การโน้มน้าว, การสื่อสารระหว่างบุคคล";
+            majorImage = "นิเทศ-1024x538.png";
+            careerImage = "นิเทศ-1024x538.png";
+            break;
+        case 5:
+            majorRecommendation = "คุณเหมาะกับสาขา... Performing Arts";
+            career = "อาชีพที่คุณสามารถทำได้: Actor, Stage Director, Performing Arts Manager";
+            skills = "<strong>ทักษะที่ควรมี:</strong> การแสดง, การสื่อสารผ่านการแสดง, ความคิดสร้างสรรค์";
+            majorImage = "นิเทศ-1024x538.png";
+            careerImage = "นิเทศ-1024x538.png";
+            break;
+        case 6:
+            majorRecommendation = "คุณเหมาะกับสาขา... Film and Still Photography";
+            career = "อาชีพที่คุณสามารถทำได้: Photographer, Film Director, Cinematographer";
+            skills = "<strong>ทักษะที่ควรมี:</strong> การถ่ายภาพ, การตัดต่อ, การเล่าเรื่องผ่านภาพ";
+            majorImage = "นิเทศ-1024x538.png";
+            careerImage = "นิเทศ-1024x538.png";
+            break;
+        case 7:
+            majorRecommendation = "คุณเหมาะกับสาขา... Communication Management Inter";
+            career = "อาชีพที่คุณสามารถทำได้: Communication Manager, PR Consultant, Brand Strategist";
+            skills = "<strong>ทักษะที่ควรมี:</strong> การบริหารจัดการ, การสื่อสารระหว่างองค์กร, การพัฒนากลยุทธ์";
+            majorImage = "นิเทศ-1024x538.png";
+            careerImage = "นิเทศ-1024x538.png";
+            break;
+    }
+
+    document.getElementById("question-page").style.display = "none";
+    document.getElementById("result-page").style.display = "block";
+    
+    // แสดงผลรูปภาพด้านบนของชื่อสาขา
+    document.getElementById("major-image").src = majorImage;
+    document.getElementById("major-image").style.display = "block";
+
+    // แสดงผลชื่อสาขา
+    document.getElementById("career-result").innerText = majorRecommendation;
+
+    // เส้นคั่นระหว่างชื่อสาขากับอาชีพ
+    document.getElementById("divider").style.display = "block";
+
+    // แสดงผลรูปภาพด้านบนของอาชีพ
+    document.getElementById("career-image").src = careerImage;
+    document.getElementById("career-image").style.display = "block";
+
+    // แสดงผลอาชีพและทักษะที่เกี่ยวข้อง
+    document.getElementById("result-skills").innerHTML = career + "<br><br>" + skills;
+}
+function restartTest() {
+    currentQuestion = 0; // รีเซ็ตคำถาม
+    totalScore = [0, 0, 0, 0, 0, 0, 0, 0]; // รีเซ็ตคะแนน
+    document.getElementById("result-page").style.display = "none"; // ซ่อนหน้าผลลัพธ์
+    document.getElementById("intro-page").style.display = "block"; // แสดงหน้าเริ่มต้น
+}
+
+        
+    </script>
+
+</body>
+</html>
