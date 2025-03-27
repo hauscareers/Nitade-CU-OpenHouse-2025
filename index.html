@@ -101,13 +101,13 @@
             padding: 10px;
             font-size: 18px;
             border: none;
-            background: #D9A374;
+            background: #A8C490; /* สีเขียวปกติ */
             color: white;
             cursor: pointer;
             border-radius: 5px;
         }
         .restart-btn:hover {
-            background: #C18B64;
+            background: #8CA774; /* สีเขียวเข้มขึ้นเมื่อกด */
         }
         .result-image-container {
             display: flex;
@@ -128,7 +128,7 @@
 <body>
 
     <div class="intro-container" id="intro-page">
-        <img src="นิเทศ-1024x538.png" alt="Career Image">
+        <img src="NITADE OPH 2025 LOGO PNG 03.png" alt="Career Image">
         <h1>มาตามหาตัวตนของคุณกันว่าคุณเป็นดอกไม้ชนิดใด?</h1>
           <p class="sub-text">ค้นหาสาขาที่เหมาะกับตัวคุณ!</p> 
         <button class="choice-btn" onclick="startTest()">ไปกันเลยยยยย!</button>
@@ -148,6 +148,7 @@
 
             <!-- Major Image Section -->
             <div class="result-image-container">
+                <h3 id="flower-name" style="margin-bottom: 10px;">ชื่อดอกไม้</h3>
                 <img id="major-image" src="" alt="Major Image" style="display: none; width: 100%; max-width: 500px; border-radius: 10px;">
             </div>
 
@@ -180,7 +181,7 @@
         const questions = [
             { 
                 text: "คุณชอบทำงานแบบไหนมากที่สุด?", 
-                image: "นิเทศ-1024x538.png", 
+                image: "NITADE OPH 2025 LOGO PNG.png", 
                 choices: [
                     "วางแผนกลยุทธ์และดูแลภาพลักษณ์องค์กร", 
                     "คิดไอเดียสร้างสรรค์และออกแบบ", 
@@ -196,7 +197,7 @@
             },
             { 
                 text: "ถ้าให้เลือกเรียนคอร์สพิเศษสักคอร์สหนึ่ง คุณจะเลือกอะไร?", 
-                image: "นิเทศ-1024x538.png",
+                image: "NITADE OPH 2025 LOGO PNG.png",
                 choices: [
                     "กลยุทธ์การประชาสัมพันธ์และการสร้างภาพลักษณ์", 
                     "การสร้างโฆษณาและการออกแบบสื่อดิจิทัล", 
@@ -212,7 +213,7 @@
             },
             { 
                 text: "คุณถนัดด้านไหนมากที่สุด?", 
-                image: "นิเทศ-1024x538.png",
+                image: "NITADE OPH 2025 LOGO PNG.png",
                 choices: [
                     "วางแผน ติดต่อประสานงานกับคน", 
                     "ใช้โปรแกรมออกแบบ วาดรูป ตัดต่อวิดีโอ", 
@@ -229,7 +230,7 @@
             },
             { 
                 text: "เวลาว่างคุณชอบทำอะไร?", 
-                image: "นิเทศ-1024x538.png",
+                image: "NITADE OPH 2025 LOGO PNG.png",
                 choices: [
                     "อ่านข่าวสาร อัปเดตเทรนด์สังคมและธุรกิจ", 
                     "ดูโฆษณา กราฟิก หรือออกแบบภาพเอง", 
@@ -246,7 +247,7 @@
               },
             { 
                 text: "เมื่อเจองานที่ต้องแก้ปัญหา คุณเลือกวิธีไหน?", 
-                image: "นิเทศ-1024x538.png",
+                image: "NITADE OPH 2025 LOGO PNG.png",
                 choices: [
                     "วางแผนกลยุทธ์และวิเคราะห์ปัญหาเป็นขั้นตอน", 
                     "ใช้ความคิดสร้างสรรค์เพื่อแก้ไขปัญหา", 
@@ -262,7 +263,7 @@
             },
             { 
                 text: "คุณอยากฝึกทักษะใดมากที่สุด?", 
-                image: "นิเทศ-1024x538.png",
+                image: "NITADE OPH 2025 LOGO PNG.png",
                 choices: [
                     "การบริหารโครงการและการสื่อสารองค์กร", 
                     "การออกแบบกราฟิกและสื่อโฆษณา", 
@@ -278,7 +279,7 @@
             },
             { 
                 text: "คุณชอบทำงานเป็นทีม หรือทำงานเดี่ยวมากกว่ากัน?", 
-                image: "นิเทศ-1024x538.png",
+                image: "NITADE OPH 2025 LOGO PNG.png",
                 choices: [
                     "ทำงานเป็นทีม วางแผนและสื่อสารกับผู้อื่น", 
                     "ทำงานคนเดียว คิดไอเดียและสร้างสรรค์ผลงาน", 
@@ -294,7 +295,7 @@
             },
             { 
                 text: "คุณอยากทำงานในสภาพแวดล้อมแบบไหน?", 
-                image: "นิเทศ-1024x538.png",
+                image: "NITADE OPH 2025 LOGO PNG.png",
                 choices: [
                     "ออฟฟิศ มีการวางแผนชัดเจน", 
                     "สตูดิโอหรือพื้นที่สร้างสรรค์", 
@@ -310,7 +311,7 @@
             },
   {
     "text": "คุณคิดว่าทักษะการทำงานในปัจจุบันมีอะไรสำคัญที่สุด?",
-    "image": "นิเทศ-1024x538.png",
+    "image": "NITADE OPH 2025 LOGO PNG.png",
     "choices": [
       "การวางแผนกลยุทธ์และการบริหารจัดการ",
       "การคิดสร้างสรรค์และการออกแบบสื่อ",
@@ -326,7 +327,7 @@
   },
   {
     "text": "ถ้าให้เลือกงานที่ทำในทีม คุณจะเลือกงานประเภทไหน?",
-    "image": "นิเทศ-1024x538.png",
+    "image": "NITADE OPH 2025 LOGO PNG.png",
     "choices": [
       "วางแผนและบริหารจัดการโครงการ",
       "ออกแบบและพัฒนาแผนการสื่อสาร",
@@ -342,7 +343,7 @@
   },
   {
     "text": "ถ้าต้องทำงานที่ต้องแสดงออกต่อสาธารณะ คุณจะรู้สึกยังไง?",
-    "image": "นิเทศ-1024x538.png",
+    "image": "NITADE OPH 2025 LOGO PNG.png",
     "choices": [
       "ฉันจะวางแผนและเตรียมการอย่างรอบคอบก่อนเสมอ",
       "ฉันจะออกแบบการนำเสนอให้ดูน่าสนใจและมีความคิดสร้างสรรค์",
@@ -358,7 +359,7 @@
   },
   {
     "text": "คุณรู้สึกยังไงเกี่ยวกับการทำงานที่ต้องสร้างหรือเขียนเนื้อหาที่น่าสนใจ?",
-    "image": "นิเทศ-1024x538.png",
+    "image": "NITADE OPH 2025 LOGO PNG.png",
     "choices": [
       "ฉันชอบวางแผนและสร้างเนื้อหาที่มีประสิทธิภาพ",
       "ฉันชอบการสร้างภาพและกราฟิกที่ดึงดูด",
@@ -411,7 +412,7 @@
             }
         }
 
-        function showResult() {
+       function showResult() {
     document.getElementById("question-page").style.display = "none"; // ซ่อนหน้าคำถาม
     document.getElementById("result-page").style.display = "block"; // แสดงหน้าผลลัพธ์
     const maxScoreIndex = totalScore.indexOf(Math.max(...totalScore));
@@ -420,72 +421,75 @@
     let skills = "";
     let majorImage = ""; // รูปด้านบนชื่อสาขา
     let careerImage = ""; // รูปด้านบนอาชีพที่เกี่ยวข้อง
+    let flowerName = ""; // ชื่อดอกไม้
 
     switch (maxScoreIndex) {
         case 0: 
             majorRecommendation = "คุณเหมาะกับสาขา... Public Relations";
-            career = "อาชีพที่คุณสามารถทำได้: PR Specialist, Media Relations Manager, Event Coordinator";
+            career = "อาชีพที่รองรับในอนาคต: PR Specialist, Media Relations Manager, Event Coordinator";
             skills = "<strong>ทักษะที่ควรมี:</strong> การสื่อสาร, การบริหารโครงการ, ความคิดสร้างสรรค์";
             majorImage = "นิเทศ-1024x538.png";
-            careerImage = "นิเทศ-1024x538.png";
+            careerImage = "Asset 24.png";
             break;
         case 1:
             majorRecommendation = "คุณเหมาะกับสาขา... Advertising and Brand Communications";
-            career = "อาชีพที่คุณสามารถทำได้: Advertising Executive, Brand Manager, Marketing Specialist";
+            career = "อาชีพที่รองรับในอนาคต: Advertising Executive, Brand Manager, Marketing Specialist";
             skills = "<strong>ทักษะที่ควรมี:</strong> การออกแบบกราฟิก, การใช้โปรแกรมกราฟิก, ความคิดสร้างสรรค์";
             majorImage = "นิเทศ-1024x538.png";
-            careerImage = "นิเทศ-1024x538.png";
+            careerImage = "Asset 24.png";
             break;
         case 2:
             majorRecommendation = "คุณเหมาะกับสาขา... Media Design and Production";
-            career = "อาชีพที่คุณสามารถทำได้: Media Designer, Video Producer, Motion Graphics Designer";
+            career = "อาชีพที่รองรับในอนาคต: Media Designer, Video Producer, Motion Graphics Designer";
             skills = "<strong>ทักษะที่ควรมี:</strong> การออกแบบ, การตัดต่อวิดีโอ, ความคิดสร้างสรรค์";
             majorImage = "นิเทศ-1024x538.png";
-            careerImage = "นิเทศ-1024x538.png";
+            careerImage = "Asset 24.png";
             break;
         case 3:
-            majorRecommendation = "คุณเหมาะกับสาขา... Journalism, Information, and New Media";
-            career = "อาชีพที่คุณสามารถทำได้: Journalist, Content Writer, Digital Media Specialist";
+            majorRecommendation = "คุณเหมาะกับสาขา... Journalism and New Media";
+            career = "อาชีพที่รองรับในอนาคต: Journalist, Content Writer, Digital Media Specialist";
             skills = "<strong>ทักษะที่ควรมี:</strong> การเขียน, การวิเคราะห์ข่าวสาร, การทำงานกับข้อมูล";
             majorImage = "นิเทศ-1024x538.png";
-            careerImage = "นิเทศ-1024x538.png";
+            careerImage = "Asset 24.png";
             break;
         case 4:
             majorRecommendation = "คุณเหมาะกับสาขา... Speech Communication";
-            career = "อาชีพที่คุณสามารถทำได้: Public Speaker, Communication Consultant, Corporate Trainer";
+            career = "อาชีพที่รองรับในอนาคต: Public Speaker, Communication Consultant, Corporate Trainer";
             skills = "<strong>ทักษะที่ควรมี:</strong> การพูด, การโน้มน้าว, การสื่อสารระหว่างบุคคล";
             majorImage = "นิเทศ-1024x538.png";
-            careerImage = "นิเทศ-1024x538.png";
+            careerImage = "Asset 24.png";
             break;
         case 5:
             majorRecommendation = "คุณเหมาะกับสาขา... Performing Arts";
-            career = "อาชีพที่คุณสามารถทำได้: Actor, Stage Director, Performing Arts Manager";
+            career = "อาชีพที่รองรับในอนาคต: Actor, Stage Director, Performing Arts Manager";
             skills = "<strong>ทักษะที่ควรมี:</strong> การแสดง, การสื่อสารผ่านการแสดง, ความคิดสร้างสรรค์";
             majorImage = "นิเทศ-1024x538.png";
-            careerImage = "นิเทศ-1024x538.png";
+            careerImage = "Asset 24.png";
             break;
         case 6:
             majorRecommendation = "คุณเหมาะกับสาขา... Film and Still Photography";
-            career = "อาชีพที่คุณสามารถทำได้: Photographer, Film Director, Cinematographer";
+            career = "อาชีพที่รองรับในอนาคต: Photographer, Film Director, Cinematographer";
             skills = "<strong>ทักษะที่ควรมี:</strong> การถ่ายภาพ, การตัดต่อ, การเล่าเรื่องผ่านภาพ";
-            majorImage = "นิเทศ-1024x538.png";
-            careerImage = "นิเทศ-1024x538.png";
+            majorImage = "Asset 1.png";
+            careerImage = "Asset 24.png";
             break;
         case 7:
             majorRecommendation = "คุณเหมาะกับสาขา... Communication Management Inter";
-            career = "อาชีพที่คุณสามารถทำได้: Communication Manager, PR Consultant, Brand Strategist";
+            career = "อาชีพที่รองรับในอนาคต: Communication Manager, PR Consultant, Brand Strategist";
             skills = "<strong>ทักษะที่ควรมี:</strong> การบริหารจัดการ, การสื่อสารระหว่างองค์กร, การพัฒนากลยุทธ์";
             majorImage = "นิเทศ-1024x538.png";
-            careerImage = "นิเทศ-1024x538.png";
+            careerImage = "Asset 24.png";
             break;
     }
 
     document.getElementById("question-page").style.display = "none";
     document.getElementById("result-page").style.display = "block";
-    
     // แสดงผลรูปภาพด้านบนของชื่อสาขา
     document.getElementById("major-image").src = majorImage;
     document.getElementById("major-image").style.display = "block";
+
+    // แสดงชื่อดอกไม้
+    document.getElementById("flower-name").innerText = flowerName;  // เพิ่มการแสดงชื่อดอกไม้
 
     // แสดงผลชื่อสาขา
     document.getElementById("career-result").innerText = majorRecommendation;
