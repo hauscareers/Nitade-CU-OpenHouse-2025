@@ -118,12 +118,14 @@
             margin-bottom: 20px;
         }
 
-        .result-image-container img {
-            max-width: 100%;
-            width: auto;
-            height: auto;
-            border-radius: 10px;
-        }
+  .result-image-container img {
+    width: 70%; /* หรือใช้ 100% ถ้าต้องการให้เต็มพื้นที่ */
+    max-width: 500px; /* กำหนดขนาดสูงสุดเพื่อไม่ให้รูปใหญ่เกินไป */
+    height: auto; /* รักษาอัตราส่วนของรูป */
+    display: block; /* ทำให้รูปอยู่ตรงกลาง */
+    margin: 0 auto; /* จัดกึ่งกลาง */
+}
+        
     </style>
 </head>
 <body>
