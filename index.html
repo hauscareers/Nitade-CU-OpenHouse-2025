@@ -17,26 +17,25 @@
             padding: 0;
         }
         .container {
-            width: 374px; /* กำหนดความกว้างคงที่ */
-            height: 608px; /* กำหนดความสูงคงที่ */
-            margin: 50px auto;
-            padding: 20px;
-            background: transparent;
-            border-radius: 10px;
-            box-shadow: none; /* ✅ เอาเงาออก */
-           
+    width: 90%; /* ปรับความกว้างอัตโนมัติตามหน้าจอ */
+    max-width: 374px; /* จำกัดความกว้างสูงสุด */
+    height: auto; /* ให้ขนาดปรับตามเนื้อหา */
+    margin: 30px auto;
+    padding: 15px;
+    background: transparent;
+    border-radius: 10px;    
         }
-  .choice-btn {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            font-size: 18px;
-            border: none;
-           background: #A8C490; /* สีเขียวปกติ */
-            color: white;
-            cursor: pointer;
-            border-radius: 5px;
+ .choice-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 16px; /* ลดขนาดฟอนต์ */
+    border: none;
+    background: #A8C490;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
         }
         .choice-btn:hover {
             background: #8CA774; /* สีเขียวเข้มขึ้นเมื่อกด */
